@@ -13,6 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Rotas nomeadas
+Route::get('/redirect3', function (){
+    return redirect()->route('url.name');
+});
+
+Route::get('/nome-url', function (){
+    return 'Hey hey';
+})->name('url.name');
+
+//Redirecionando rotas
+Route::view('/view', 'welcome', ['id' => 'parametro']);
+/* Route::get('/view', function(){
+    return view('welcome');
+}); */
+
+Route::redirect('redirect1', 'redirect2');
+/* Route::get('redirect1', function(){
+    return redirect('/redirect2');
+}); */
+
+Route::get('redirect2', function(){
+    return 'Redirect 02';
+});
+
 //Rota com parâmetros opcionais
 Route::get('/produtos/{idProduct?}', function ($idProduct = ''){
     return "Produto(s) {$idProduct}";
