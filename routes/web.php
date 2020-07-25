@@ -13,6 +13,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//atalho para rotas de crud
+Route::resource('products', 'ProductController');
+
+/* //para deletar um registro deve-se utilizar o delete
+Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
+//para editar um registro deve-se utilizar put
+Route::put('/products/{id}', 'ProductController@update')->name('products.update');
+Route::get('/products/{id}/edit', 'ProductController@edit')->name('products.edit');
+Route::get('/products/create', 'ProductController@create')->name('products.create');
+Route::get('/products/{id?}', 'ProductController@show')->name('products.show');
+Route::get('/products', 'ProductController@index')->name('products.index');
+//Quando for registrar um novo cadastro deve-se usar o post
+Route::post('/products', 'ProductController@store')->name('products.store'); */
+
+
+Route::get('/login', function(){
+    return 'Login';
+});
+
+//Grupos de Rotas
+Route::get('/admin/dashboard', function(){
+    return 'Home admin';
+})->middleware('auth');
+
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/admin/financeiro', function(){
+        return 'Financeiro admin';
+    });
+    
+    Route::get('/admin/produtos', function(){
+        return 'Produtos admin';
+    });
+});
+
+
 //Rotas nomeadas
 Route::get('/redirect3', function (){
     return redirect()->route('url.name');
