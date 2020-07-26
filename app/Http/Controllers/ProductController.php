@@ -2,48 +2,95 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $request;
+
+    public function __construct(Request $request){
+
+        //dd($request);//apresenta e morre
+        $this->request = $request;
+        //$this->middleware('auth');//Middleware em todos os métodos
+        $this->middleware('auth')->only([
+            'create', 'store'
+        ]);//Middleware em um determinado método
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-
-        $products = ['Notebook', 'Desktop', 'Gabinete'];
-        return $products; //retornar um JSON quando return um array
+        //
     }
 
-    //a rota passa parâmetro
-    public function show($id = '')
-    {
-        return "id do produto:" . $id;
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return 'Exibe o form de cadastro de um novo produto';
+        //
     }
 
-    //Exibe o form de edição de um  produto que foi recebido por parâmetro
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        return 'Exibe o form de edição do produto' . $id;
+        //
     }
 
-    //Método post para cadastrar
-    public function store()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        return 'Cadastrando um novo produto';
+        //
     }
 
-    //Método para atualizar um registro
-    public function update($id){
-        return 'Editando produto' .  $id;
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
-
-    //Método para deletar um registro
-    public function destroy($id){
-        return 'Excluindo produto' .  $id;
-    }
-
 }

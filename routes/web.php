@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //atalho para rotas de crud
+//Route::resource('products', 'ProductController')->middleware('auth');
 Route::resource('products', 'ProductController');
 
 /* //para deletar um registro deve-se utilizar o delete
