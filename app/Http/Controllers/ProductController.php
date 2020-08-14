@@ -11,12 +11,15 @@ class ProductController extends Controller
 
     public function __construct(Request $request){
 
-        //dd($request);//apresenta e morre
+        //dd($request->pm1);//apresenta e morre
         $this->request = $request;
+
         //$this->middleware('auth');//Middleware em todos os métodos
-        $this->middleware('auth')->only([
+
+        //direto no controller
+        $this->middleware('auth')->only([//Middleware em um determinado método
             'create', 'store'
-        ]);//Middleware em um determinado método
+        ]);
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +28,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $test = '<h1>Hello</h1>';
+        /* return view('test',[
+            'test' => $test
+        ]); */
+
+        return view('admin.pages.products.index', compact('test'));
     }
 
     /**
