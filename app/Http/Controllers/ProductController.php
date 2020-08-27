@@ -28,12 +28,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $test = '<h1>Hello</h1>';
+        //$test = '<h1>Hello</h1>';
+        $test = 123;
+        $products = [1,2,3,4];
         /* return view('test',[
             'test' => $test
         ]); */
 
-        return view('admin.pages.products.index', compact('test'));
+        return view('admin.pages.products.index', compact('test', 'products'));
     }
 
     /**

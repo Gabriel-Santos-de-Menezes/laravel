@@ -7,6 +7,7 @@
 </head>
 <body>
     <div class="container">
+        {{-- template --}}
         @yield('content')
     </div>
 </body>
