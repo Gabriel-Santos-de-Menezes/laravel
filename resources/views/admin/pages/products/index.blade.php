@@ -9,6 +9,20 @@
 
 @section('content')
     <h1>Exibindo produtos</h1>
+
+    {{-- Exibindo components --}}
+    @component('admin.components.card')
+        @slot('title')
+            <h1>Título Card</h1>
+        @endslot
+        Um card de exemplo
+    @endcomponent
+    {{--  --}}
+    <hr />
+    {{-- Incluindo outros camponentes  --}}
+    @include('admin.includes.alerts', ['content' => 'Alerta de preços'])
+    <hr />
+    {{--  --}}
     
     @isset($products)
         @foreach ($products as $product)
