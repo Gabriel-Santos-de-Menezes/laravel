@@ -17,9 +17,9 @@ class ProductController extends Controller
         //$this->middleware('auth');//Middleware em todos os métodos
 
         //direto no controller
-        $this->middleware('auth')->only([//Middleware em um determinado método
+        /* $this->middleware('auth')->only([//Middleware em um determinado método
             'create', 'store'
-        ]);
+        ]); */
     }
     /**
      * Display a listing of the resource.
@@ -45,7 +45,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        //exibe a view de cafastro de formulários
+        return view('admin.pages.products.create');
     }
 
     /**
@@ -56,7 +57,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //cria
+        /* dd('Cadastrando...'); */
+        /* dd($request->only(['name', 'description'])); */
+        /* dd($request->name()); */
+        /* dd($request->has('name')); */
+        /* dd($request->input('name', 'default')); */
+        /* dd($request->except('_token')); */
+        if($request->file('photo')->isValid()){
+            /* dd($request->photo->extension()); */
+            //dd($request->file('photo')->store('products'));
+            $nameFile = $request->name . '.' . $request->photo->extension();
+            dd($request->file('photo')->storeAs('products', $nameFile));
+        }
     }
 
     /**
@@ -78,7 +91,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        //editar 
+        return view('admin.pages.products.edit', compact('id'));
     }
 
     /**
@@ -90,7 +104,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //atualiza os registros
+        dd("Editando produto");
     }
 
     /**

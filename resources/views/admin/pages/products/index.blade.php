@@ -1,14 +1,20 @@
-<style>
-    .last{
-        background: #515151;
-    }
-</style>
+{{-- Recurso de stack para atribuir css --}}
+@push('styles')
+    <style>
+        .last{
+            background: #515151;
+        }
+    </style>
+@endpush
+
 @extends('admin.layouts.app')<!-- Extende o app.blade -->
 
 @section('title', 'Gestão de Produtos')
 
 @section('content')
     <h1>Exibindo produtos</h1>
+    <a href="{{ route('products.create') }}">Cadastrar</a>
+    <hr>
 
     {{-- Exibindo components --}}
     @component('admin.components.card')
@@ -90,3 +96,8 @@
 
 @endsection
 
+@push('scripts')
+    <script>
+        document.body.style.background = '#999'
+    </script>
+@endpush
