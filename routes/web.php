@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //Route::resource('products', 'ProductController')->middleware('auth');
 Route::resource('products', 'ProductController');
 
+Route::resource('exercicios', 'ExerciciosController');
+
 /* //para deletar um registro deve-se utilizar o delete
 Route::delete('/products/{id}', 'ProductController@destroy')->name('products.destroy');
 //para editar um registro deve-se utilizar put
